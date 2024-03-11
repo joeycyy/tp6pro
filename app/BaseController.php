@@ -3,8 +3,12 @@ declare (strict_types = 1);
 
 namespace app;
 
+use app\common\Common;
+use app\model\admin\Admin;
 use think\App;
+use think\Config;
 use think\exception\ValidateException;
+use think\Response;
 use think\Validate;
 
 /**
@@ -12,6 +16,7 @@ use think\Validate;
  */
 abstract class BaseController
 {
+    use Common;
     /**
      * Request实例
      * @var \think\Request
@@ -67,6 +72,7 @@ abstract class BaseController
         if (!in_array($controller, $noLongin_arr))
         {
             $check_res = $this->adminLoginCheck();
+            dump($check_res);
         }
     }
 
@@ -121,7 +127,20 @@ abstract class BaseController
         }
         if (empty($admin_id))
         {
-            return array('status' => 'Fail');
+            return $this->returnApi(config('status.fail'), 'admin_id为空');
         }
+        $admin = new Admin();
+        $admin_info = $admin->getAdminInfo($admin_id);
+        if (empty($admin_info))
+        {
+            return $this->returnApi(config('status.fail'), '账号不存在');
+        }
+
+        if ($admin_shell != md5("LJAF&AFA".$admin['admin_id'].$admin['admin_pwd']))
+        {
+            return $this->returnApi(config('status.fail'), '登录已失效');
+        }
+        unset($admin_info['admin_pwd']);
+        return $this->returnApi(config('status.success'), '登录信息校验通过', $admin_info);
     }
 }
