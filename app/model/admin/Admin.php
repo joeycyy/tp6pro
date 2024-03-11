@@ -52,4 +52,12 @@ class Admin extends Model
         echo $this->getLastSql();
         return $roles;
     }
+
+    /*
+     * 根据admin_id查找管理员信息
+     * */
+    public function getAdminInfo($admin_id)
+    {
+        return $this->where('admin_id', $admin_id)->findOrEmpty();
+    }
 }
