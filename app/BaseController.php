@@ -69,11 +69,17 @@ abstract class BaseController
         // 获取当前请求的控制器名
         $controller = request()->controller(true);
         // 如果不是登录的控制器，需要进行登录验证
-        if (!in_array($controller, $noLongin_arr))
-        {
+        if (!in_array($controller, $noLongin_arr)) {
             $check_res = $this->adminLoginCheck();
-            dump($check_res);
+            if ($check_res['status'] == config('status.success')) {
+                $this->admin_info = $check_res['data'];
+                $this->admin_id = $this->admin_info['admin_id'];
+            } else {
+                return $this->redirectTo('/admin/login/index');
+            }
         }
+
+        // 权限判断 TODO
     }
 
     /**
@@ -142,5 +148,14 @@ abstract class BaseController
         }
         unset($admin_info['admin_pwd']);
         return $this->returnApi(config('status.success'), '登录信息校验通过', $admin_info);
+    }
+
+    /**
+     * 自定义重定向方法
+     * @param $args
+     */
+    public function redirectTo(...$args) {
+        // 此处 throw new HttpResponseException 这个异常一定要写
+        throw new HttpResponseException(redirect(...$args));
     }
 }
