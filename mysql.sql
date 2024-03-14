@@ -39,6 +39,10 @@ CREATE TABLE `tp_admin_power` (
                                   `add_datetime` datetime DEFAULT NULL,
                                   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限表';
+alter table tp_admin_power
+    add porder int not null;
+
+
 
 -- 管理员角色表
 CREATE TABLE `tp_admin_role` (
@@ -48,3 +52,13 @@ CREATE TABLE `tp_admin_role` (
                                  `role_powers` text,
                                  PRIMARY KEY (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='管理员角色';
+-- auto-generated definition
+create table tp_admin_login
+(
+    admin_id     int         not null,
+    login_status int         null,
+    add_datetime datetime    null,
+    login_ip     varchar(32) null
+)
+    comment '登录记录表';
+
