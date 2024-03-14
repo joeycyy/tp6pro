@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdc1e01fb921219d491af486426081b2",
+    "content-hash": "bee06e2eb157d839b81e1a1f2b8b6771",
     "packages": [
         {
             "name": "psr/container",
@@ -275,20 +275,20 @@
         },
         {
             "name": "topthink/think-captcha",
-            "version": "v3.0.9",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/think-captcha.git",
-                "reference": "b1ef360670578214edeebcf824aaf6ab7ee0528b"
+                "reference": "1eef3717c1bcf4f5bbe2d1a1c704011d330a8b55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/think-captcha/zipball/b1ef360670578214edeebcf824aaf6ab7ee0528b",
-                "reference": "b1ef360670578214edeebcf824aaf6ab7ee0528b",
+                "url": "https://api.github.com/repos/top-think/think-captcha/zipball/1eef3717c1bcf4f5bbe2d1a1c704011d330a8b55",
+                "reference": "1eef3717c1bcf4f5bbe2d1a1c704011d330a8b55",
                 "shasum": ""
             },
             "require": {
-                "topthink/framework": "^6.0|^8.0"
+                "topthink/framework": "^6.0.0"
             },
             "type": "library",
             "extra": {
@@ -322,9 +322,9 @@
             "description": "captcha package for thinkphp",
             "support": {
                 "issues": "https://github.com/top-think/think-captcha/issues",
-                "source": "https://github.com/top-think/think-captcha/tree/v3.0.9"
+                "source": "https://github.com/top-think/think-captcha/tree/v3.0.3"
             },
-            "time": "2023-04-27T07:18:40+00:00"
+            "time": "2020-05-19T10:55:45+00:00"
         },
         {
             "name": "topthink/think-helper",
