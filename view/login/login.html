@@ -37,7 +37,7 @@
                 </div>
                 <div class="layui-col-xs5">
                   <div style="margin-left: 10px;">
-                    <img src="/admin/login/loginYzm"  onclick="changeYzm()" style="width: 130px;height: 50px;" class="layadmin-user-login-codeimg" id="vercode_img">
+                    <img src="/login/loginYzm"  onclick="changeYzm()" style="width: 130px;height: 50px;" class="layadmin-user-login-codeimg" id="vercode_img">
                   </div>
                 </div>
               </div>
@@ -62,7 +62,7 @@
               //监听提交
               form.on('submit(login)', function(data){
                 
-                var sub_url = "/admin/login/loginAct";
+                var sub_url = "/login/loginAct";
                 $.post(sub_url,data.field,function(redata){
                     
                     if(redata.status == 'SUCCESS')
@@ -85,7 +85,7 @@
     function changeYzm()
     {
         var time = Math.random();
-        $("#vercode_img").attr('src',"/admin/login/loginYzm?rands="+time);
+        $("#vercode_img").attr('src',"/login/loginYzm?rands="+time);
     }
     </script>
     <!-- 底部结束 -->
